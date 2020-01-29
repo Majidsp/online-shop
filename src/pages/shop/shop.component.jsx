@@ -15,14 +15,10 @@ const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
 const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
 class ShopPage extends Component {   
-    constructor(props) {
-        super(props);
-        
-        this.state = {
-            loading: true
-        }
-    };
-
+    state = {
+        loading: true
+    }
+    
     unsubscribeFromSnapshot = null;
 
     componentDidMount() {

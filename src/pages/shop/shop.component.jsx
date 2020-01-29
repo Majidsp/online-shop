@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import CollectionsOverview from '../../components/collections-overview/collections-overview.component';
 import CollectionPage from '../collection/collection.component';
-import { WithSpinner } from '../../components/with-spinner/with-spinner.component';
+import WithSpinner from '../../components/with-spinner/with-spinner.component';
 
 import { firestore, convertCollectionsSnapshotToMap } from '../../firebase/firebase.utils';
 
@@ -14,9 +14,13 @@ import { updateCollections } from '../../redux/shop/shop.actions';
 const CollectionsOverviewWithSpinner = WithSpinner(CollectionsOverview);
 const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
-class ShopPage extends Component {    
-    state = {
-        laoding: true
+class ShopPage extends Component {   
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            loading: true
+        }
     };
 
     unsubscribeFromSnapshot = null;
@@ -34,7 +38,7 @@ class ShopPage extends Component {
     
     render() {
         const { match } = this.props;
-        const { loading } = this.state;
+        const { loading } = this.state;        
         return (
             <div className='shop-page'>
                 <Route exact path={`${match.path}`} render={(props) => <CollectionsOverviewWithSpinner isLoading={loading} {...props} />} />

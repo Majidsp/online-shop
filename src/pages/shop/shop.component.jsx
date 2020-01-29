@@ -19,6 +19,7 @@ class ShopPage extends Component {
         loading: true
     }
     
+    
     componentDidMount() {
         const { updateCollections } = this.props;
         const collectionRef = firestore.collection('collections');
